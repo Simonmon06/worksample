@@ -17,7 +17,6 @@ export const TopToolBar = ({ mode, setMode }) => {
                   bg-[rgba(48,52,56,0.55)] backdrop-blur-sm shadow rounded-b-[16px]"
       >
         {mode === "default" ? (
-          // 3 buttons: use gap
           <>
             <button className={btn}>
               <SignOutIcon size={16} weight="bold" />

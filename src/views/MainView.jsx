@@ -8,36 +8,37 @@ const ACCESS_KEY = import.meta.env.VITE_UNSPLASH_ACCESS_KEY;
 console.log("ACCESS_KEY:", ACCESS_KEY);
 export default function MainView() {
   const [mode, setMode] = useState("default");
-  const [photo, setPhoto] = useState(null);
+  const [photos, setPhotos] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
     let alive = true;
-    async function fetchOnePhoto() {
+    async function fetchPhotos() {
       try {
-        const photoId = "tHkJAMcO3QE";
+        const collectionId = "pT24l4gTJP0";
 
         const res = await axios.get(
-          `https://api.unsplash.com/photos/${photoId}`,
+          `https://api.unsplash.com/collections/${collectionId}/photos`,
           {
             params: {
+              per_page: 3,
               client_id: ACCESS_KEY,
             },
           }
         );
-        const photo = res.data;
-        console.log(photo);
-        const src = photo.urls.raw;
+        const photos = res.data;
+        const srcs = photos.map((p) => p.urls.raw);
+
         if (alive) {
-          setPhoto({ src });
+          setPhotos({ srcs });
           setLoading(false);
         }
       } catch (error) {
         console.error(error);
       }
     }
-    fetchOnePhoto();
+    fetchPhotos();
     return () => {
       alive = false;
     };
@@ -64,10 +65,9 @@ export default function MainView() {
               : "w-full max-w-5xl aspect-[16/10] overflow-hidden rounded-3xl shadow-2xl"
           }
         >
-          {photo?.src && (
+          {photos?.srcs[0] && (
             <img
-              src={photo.src}
-              alt={photo.alt}
+              src={photos.srcs[0]}
               className="w-full h-full object-cover"
               loading="eager"
               decoding="async"

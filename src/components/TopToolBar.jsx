@@ -5,7 +5,7 @@ import {
   CheckIcon,
 } from "@phosphor-icons/react";
 
-export const TopToolBar = ({ mode, setMode, exitFunction }) => {
+export const TopToolBar = ({ mode, setMode }) => {
   const btn =
     "btn btn-sm btn-ghost h-10 px-4 gap-2 rounded-[12px] " +
     "bg-black/35 text-white hover:bg-white hover:text-zinc-900 ";

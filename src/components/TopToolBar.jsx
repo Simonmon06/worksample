@@ -13,7 +13,7 @@ export const TopToolBar = ({ mode, setMode }) => {
   return (
     <div className="fixed top-0 inset-x-0 z-20 flex justify-center">
       <div
-        className="inline-flex h-14 w-fit max-w-[calc(100vw-16px)] items-center gap-2 p-2
+        className="inline-flex h-14 w-fit items-center gap-2 p-2
                   bg-[rgba(48,52,56,0.55)] backdrop-blur-sm shadow rounded-b-[16px]"
       >
         {mode === "default" ? (

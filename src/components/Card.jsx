@@ -44,7 +44,7 @@ export function Card({
         className={`w-full h-full overflow-hidden ${
           isSpaces ? "rounded-2xl shadow-2xl" : "rounded-none shadow-none"
         }`}
-        style={{ transformOrigin: "50% 50%", willChange: "transform" }}
+        style={{ willChange: "transform" }}
       >
         <img
           src={src}
